@@ -1,0 +1,45 @@
+执行  /usr/bin/mysql_secure_installation
+重新执行安装程序
+中间 可以设置密码
+
+
+
+
+数据库登录
+连接数据库
+mysql -hlocalhost -uroot(用户名) -proot(密码)
+主机地址可以设置，如远程主机IP为：110.110.110.110
+
+修改密码
+解决方法如下：
+1、终端中结束当前正在运行的mysql进程。
+# sudo /etc/init.d/mysql stop
+
+2、用mysql安全模式运行并跳过权限验证。
+# sudo /usr/bin/mysqld_safe --skip-grant-tables
+
+3、ctrl+T重开一个终端以root身份登录mysql。
+# mysql -u root
+
+4、修改root用户口令。
+mysql> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> update user set Password = PASSWORD('root') where User ='root';
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3 Changed: 3 Warnings: 0
+
+mysql> exit
+注意：括号里的'root'就是新密码。
+5、结束mysql安全模式，用正常模式运行mysql。
+# sudo /etc/init.d/mysql restart
+
+6、试试你新修改的口令登陆MySQL
+# myslq -u root -p
+输入密码 root
+mysql> show grants for 'root'@'127.0.0.1'; 
+mysql> flush privileges；
+刷新账户后，退出。
+mysql> quit;

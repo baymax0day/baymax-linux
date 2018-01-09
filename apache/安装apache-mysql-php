@@ -1,0 +1,37 @@
+1：首先安装apache：打开终端（ctrl+Alt+t），
+
+输入命令：sudo apt-get install apache2即可安装，
+
+安装完后，打开浏览器，在地址栏输入：localhost或者http://127.0.0.1
+
+看到It works，表示安装成功！ 
+
+默认根目录：/var/www/ 
+
+2：安装mysql： 
+
+sudo apt-get install mysql-server-5.0 
+
+安装完后，会要你新设置mysql root密码，输入你自己的密码后enter键，再确认密码。
+
+3：安装PHP 5 and Apache PHP 5 module: 
+
+sudo apt-get install php5 libapache2-mod-php5
+
+sudo /etc/init.d/apache2 restart(重启apache) 
+
+试试成功否： 
+
+命令：gksudo gedit /var/www/text.php 【在apache默认根目录/var/www/下创建一text.php文件】
+
+在text.php文件中输入以下代码检验是否安装成功： 
+
+<?php 
+
+echo “helloworld”; 
+
+?> 
+
+在浏览器地址栏输入：http：//localhost/text.php 如果页面显示helloworld则表示成功 
+
+温馨提示：如果返回终端时无法再次输入命令时，按ctrl+z组合键 

@@ -1,0 +1,21 @@
+# Virtual hosts
+#Include conf/extra/httpd-vhosts.conf
+
+这种方法不是很好，相当于禁用了virtual hosts，我们可以修改httpd-vhosts.conf这个配置文件，加入require all granted即可。
+
+如下：
+
+# Virtual Hosts
+#
+
+<VirtualHost *:80>
+ServerName localhost
+DocumentRoot c:/wamp64/www
+<Directory  "c:/wamp64/www/">
+Options +Indexes +Includes +FollowSymLinks +MultiViews
+AllowOverride All
+Require local
+Require all granted
+</Directory>
+</VirtualHost>
+#
